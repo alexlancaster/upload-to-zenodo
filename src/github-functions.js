@@ -21,7 +21,7 @@ const getFileFromGitHubRepository = async (
   file_path,
 ) => {
   try {
-    const url = `https://api.github.com/repos/${repo}/contents/${file_name}`;
+    const url = `https://api.github.com/repos/${repo}/contents/${file_name}?ref=beta_prep`;
 
     const headers = {
       Accept: 'application/vnd.github.v3+json',
@@ -92,7 +92,7 @@ const getAssetFromGithubRelease = async (url, file_name, file_path) => {
  */
 const getFileSHA = async (github_token, repo, file_name) => {
   try {
-    const url = `https://api.github.com/repos/${repo}/contents/${file_name}`;
+    const url = `https://api.github.com/repos/${repo}/contents/${file_name}?ref=beta_prep`;
 
     const headers = {
       Accept: 'application/vnd.github.v3+json',
@@ -179,7 +179,7 @@ const uploadFileToGitHub = async (
       };
     }
 
-    const url = `https://api.github.com/repos/${config.repository}/contents/${file_name}`;
+    const url = `https://api.github.com/repos/${config.repository}/contents/${file_name}?ref=beta_prep`;
 
     const headers = {
         Accept: 'application/vnd.github.v3+json',
@@ -217,7 +217,8 @@ const getGithubRepoZipball = async (config, release_assets_folder_path) => {
   core.info(`Downloading ${zip_file_name} to ${zip_file_path}`);
 
   try {
-    const url = `https://api.github.com/repos/${owner}/${repo}/zipball/${default_branch}`;
+      //const url = `https://api.github.com/repos/${owner}/${repo}/zipball/${default_branch}`;
+      const url = `https://api.github.com/repos/${owner}/${repo}/zipball/beta_prep`;
 
     // Getting back the data as a stream.
     // Seems to be working better this way.
